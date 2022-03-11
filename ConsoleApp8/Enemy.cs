@@ -5,8 +5,11 @@ namespace LORD
     {
         private int attackStrength;
 
-        public Enemy()
+        public Enemy(string name, int hp)
         {
+            Name = name;
+            HP = hp;
+            IsDead = false;
 
         }
 
@@ -25,6 +28,7 @@ namespace LORD
             {
                 //This enemy is dead
                 //Spill reward and exp
+                IsDead = true;
             }
         }
 
@@ -46,6 +50,11 @@ namespace LORD
         /// The amount of damage that will be inflicted on fighter
         /// </summary>
         public int DamageOutput
+        {
+            get; private set;
+        }
+
+        public bool IsDead
         {
             get; private set;
         }

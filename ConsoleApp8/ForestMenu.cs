@@ -43,15 +43,15 @@ namespace LORD
             switch(input.ToUpper())
             {
                 case "L":
-                    Console.WriteLine("Hell yes, we are looking for shit to kill");
+                    //Console.WriteLine("Hell yes, we are looking for shit to kill");
                     ForestFightingMenu forestFightingMenu = new ForestFightingMenu();
-                    Console.ReadKey();
+                    //Console.ReadKey();
                     break;
 
                 case "R":
                     Console.WriteLine("Returning to town.");
                     stayInTheForest = false;
-                    Console.ReadKey();
+                    //Console.ReadKey();
                     break;
 
                 default:

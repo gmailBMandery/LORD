@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ConsoleApp8
+namespace LORD
 {
     class Program
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp8
+namespace LORD
 {
     internal class MainMenu
     {
@@ -32,14 +32,18 @@ namespace ConsoleApp8
             Console.WriteLine("---------------------------------------------------------------");
         }
 
+        Boolean keepRunning = true;
         public Boolean ProcessSelection(string input)
         {
-            Boolean keepRunning = true;
+            
             switch(input.ToUpper())
             {
                 case "F":
                     Console.WriteLine("We're going to the forest");
                     Console.ReadKey();
+                    ForestMenu forestMenu = new ForestMenu();
+                    PaintMainMenu();
+                    ProcessSelection(GatherInput.GetInput());
                     break;
 
                 case "Q":

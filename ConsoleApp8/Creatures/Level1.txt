@@ -5,3 +5,4 @@ Stone Giant:6:3:1
 Rottingboy:5:2:1
 Fetidsnake:8:2:1
 Misty Frost Tiger:12:4:1
+Rotting Corpse:8:3:1

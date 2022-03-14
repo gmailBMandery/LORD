@@ -11,43 +11,124 @@ namespace LORD
         public void PaintMainMenu()
         {
             Console.Clear();
-            Console.WriteLine("---------------------------------------------------------------");
-            Console.Write("[");
+            Console.Write("Legend Of The Red Dragon - ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("F");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("]");
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Enter the Forest!");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Town Square");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("The streets are crowded, it is difficult to");
+            Console.WriteLine(" push your way through the mob...");
+            Console.WriteLine();
+            Console.WriteLine();
 
-            Console.Write("[");
+            //Forest
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Q");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("F");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Leave This Realm!");
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("---------------------------------------------------------------");
+            Console.Write("Enter the Forest");
+
+            //Slaughter of players
+            Console.CursorLeft = 40;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("S");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("laughter other Players");
+
+
+
+
+            //King Arthurs Weapons
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("K");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("ing Arthurs Weapons");
+
+
+            //Abduls Armour
+            Console.CursorLeft = 40;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("A");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("bduls Armour");
+
+            //Healers Hut
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("H");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("ealers Hut");
+
+
+            //Inn
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("I");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("nn");
+
+            //Ye old Bank
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("Y");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("e Old Bank");
+
+
+            //Quit to the Fields
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("Q");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("Leave This Realm");
+            
         }
 
         Boolean keepRunning = true;
-        public Boolean ProcessSelection(string input)
+        public Boolean ProcessSelection(ConsoleKeyInfo keyInfo)
         {
             
-            switch(input.ToUpper())
+            switch(keyInfo.Key)
             {
-                case "F":
-                    Console.WriteLine("We're going to the forest");
-                    Console.ReadKey();
+                case ConsoleKey.F:
                     ForestMenu forestMenu = new ForestMenu();
                     PaintMainMenu();
-                    ProcessSelection(GatherInput.GetInput());
+                    ProcessSelection(GatherInput.GetKeyedInput());
                     break;
 
-                case "Q":
+                case ConsoleKey.Q:
+                    Console.WriteLine();
+                    Console.WriteLine();
                     Console.WriteLine("Sorry to see you leave so soon");
+
                     Console.ReadKey();
                     keepRunning = false;
                     break;

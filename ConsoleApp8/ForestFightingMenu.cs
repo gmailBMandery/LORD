@@ -11,9 +11,11 @@ namespace LORD
             //For now we will just focus on monsters
             //In the future, we will have monster pools based on level
             //Which will be held in a file within? or external so we can add monsters and happenings on the fly
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            double rndEnvent = rnd.NextDouble();
 
-
-            Enemy monster = new Enemy("Pot Belly Pig", 5, 5,1);
+            CreatureEncounter encounter = new CreatureEncounter(Program.player.Level);
+            Enemy monster = encounter.GetEncounter();
 
             StartEncounter(monster);
 
@@ -42,22 +44,23 @@ namespace LORD
 
             DisplayMenu();
 
-            string input = GatherInput.GetInput();
+            ConsoleKeyInfo keyInfo = GatherInput.GetKeyedInput();
             
-            ProcessInput(monster, input, rnd);
+            ProcessInput(monster, keyInfo, rnd);
         }
 
-        private static void ProcessInput(Enemy monster, string input, Random rnd)
+        private static void ProcessInput(Enemy monster, ConsoleKeyInfo input, Random rnd)
         {
-            switch (input.ToUpper())
+            switch (input.Key)
             {
-                case "A":
+                case ConsoleKey.A:
                     int damageAmount = rnd.Next(Program.player.Weapon.MinDamage, Program.player.Weapon.MaxDamage+1);
                     Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
                     monster.TakeDamage(damageAmount);
                     if (monster.IsDead)
                     {
                         Console.WriteLine($"The {monster.Name} is dead!");
+                        //The reward will be gold and experiance
                         Console.WriteLine("This is your reward, */*-/*-/-/-*/-*/-*");
                         Console.Write("Press anykey to continue");
                         Console.ReadKey();//If monster is not dead, he/she will hit and the process will repeat
@@ -71,8 +74,13 @@ namespace LORD
 
                     break;
 
-                case "R":
+                case ConsoleKey.R:
                     Console.WriteLine("You run away,fleeing and screaming. Luckily now one was around to see that failure. You loose 50 experiance points");
+                    Console.ReadKey();
+                    break;
+
+                case ConsoleKey.S:
+                    Console.WriteLine("View Stats has yet to be implemented");
                     Console.ReadKey();
                     break;
 
@@ -127,8 +135,8 @@ namespace LORD
             Console.WriteLine("**********************");
             Console.WriteLine($"{monster.Name} 's hit points {monster.HP}");
             DisplayMenu();
-            string input = GatherInput.GetInput();
-            ProcessInput(monster, input, rnd);
+            ConsoleKeyInfo keyInfo = GatherInput.GetKeyedInput();
+            ProcessInput(monster, keyInfo, rnd);
 
         }
     }

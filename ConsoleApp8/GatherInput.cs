@@ -16,6 +16,14 @@ namespace LORD
             return Console.ReadLine();
         }
 
+        public static ConsoleKeyInfo GetKeyedInput()
+        {
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.Write("Make Your Selection>>");
+            Console.ResetColor();
+            return Console.ReadKey();
+        }
+
         public static string GetUserName()
         {
             Console.Write("UserName>>");

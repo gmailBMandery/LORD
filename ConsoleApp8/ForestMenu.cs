@@ -26,7 +26,16 @@ namespace LORD
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Look for something to Kill!");
+            Console.WriteLine("ook for something to Kill!");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("H");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("ealer's Hut");
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("[");
@@ -35,23 +44,25 @@ namespace LORD
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Return to Town!");
+            Console.WriteLine("eturn to Town");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("---------------------------------------------------------------");
 
-            string input = GatherInput.GetInput();
-            switch(input.ToUpper())
+            ConsoleKeyInfo keyInfo = GatherInput.GetKeyedInput();
+            switch(keyInfo.Key)
             {
-                case "L":
+                case ConsoleKey.L:
                     //Console.WriteLine("Hell yes, we are looking for shit to kill");
                     ForestFightingMenu forestFightingMenu = new ForestFightingMenu();
-                    //Console.ReadKey();
                     break;
 
-                case "R":
+                case ConsoleKey.H:
+                    //Show healers hut menu, for now just restore all hitpoints to the player.
+                    Program.player.RestoreHitPoints(20);
+                    break;
+                case ConsoleKey.R:
                     Console.WriteLine("Returning to town.");
                     stayInTheForest = false;
-                    //Console.ReadKey();
                     break;
 
                 default:

@@ -3,7 +3,7 @@
     internal class Player
     {
 
-        public Player(string name, int hitPoints)
+        public Player(string name, int hitPoints, int maxHitPoints, int currentLevel)
         {
             Name = name;
             //Go find the players information by name
@@ -11,6 +11,7 @@
             HitPoints = hitPoints;
             Weapon weapon = new Weapon(1, 7);
             this.Weapon = weapon;
+            Level = currentLevel;
         }
 
         public void TakeDamage(int damageAmount)
@@ -23,7 +24,20 @@
             }
         }
 
+        public void RestoreHitPoints(int restoreAmount)
+        {
+            if (restoreAmount > MaxHitPoints)
+                HitPoints = MaxHitPoints;
+            else
+                HitPoints += restoreAmount;
+        }
+
         public int HitPoints
+        {
+            get; private set;
+        }
+
+        public int MaxHitPoints
         {
             get; private set;
         }
@@ -42,6 +56,7 @@
         {
             get;private set;
         }
+        public int Level { get; private set; }
     }
 
 

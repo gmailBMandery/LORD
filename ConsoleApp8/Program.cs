@@ -13,20 +13,20 @@ namespace LORD
         static void Main(string[] args)
         {
 
-            //Create Weapon File
-            IFormatter formatter = new BinaryFormatter();
-            Stream writeStream = new FileStream("C:\\LORD\\weaponsList.txt", FileMode.Create, FileAccess.Write);
+            ////Create Weapon File
+            //IFormatter formatter = new BinaryFormatter();
+            //Stream writeStream = new FileStream("C:\\LORD\\weaponsList.txt", FileMode.Create, FileAccess.Write);
 
-            List<Weapon> weaponList = new List<Weapon>();
+            //List<Weapon> weaponList = new List<Weapon>();
 
-            Weapon stick = new Weapon(1, 5);
-            Weapon dagger = new Weapon(5, 13);
-            weaponList.Add(stick);
-            weaponList.Add(dagger);
+            //Weapon stick = new Weapon(1, 5);
+            //Weapon dagger = new Weapon(5, 13);
+            //weaponList.Add(stick);
+            //weaponList.Add(dagger);
 
-            formatter.Serialize(writeStream, weaponList);
-            writeStream.Close();
-            writeStream.Dispose();
+            //formatter.Serialize(writeStream, weaponList);
+            //writeStream.Close();
+            //writeStream.Dispose();
 
 
 
@@ -46,7 +46,7 @@ namespace LORD
             {
                 MainMenu m = new MainMenu();
                 m.PaintMainMenu();
-                runGameLoop = m.ProcessSelection(GatherInput.GetInput());
+                runGameLoop = m.ProcessSelection(GatherInput.GetKeyedInput());
             }
         }
     }

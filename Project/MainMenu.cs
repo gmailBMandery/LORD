@@ -76,8 +76,18 @@ namespace LORD
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("ealers Hut");
+            Console.Write("ealers Hut");
 
+            //View your status
+            Console.CursorLeft = 40;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("V");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("iew your stats");
 
             //Inn
             Console.ForegroundColor = ConsoleColor.Green;
@@ -124,6 +134,11 @@ namespace LORD
                     ProcessSelection(GatherInput.GetKeyedInput());
                     break;
 
+                case ConsoleKey.V:
+                    PlayerStatsScreen ps = new PlayerStatsScreen();
+                    PaintMainMenu();
+                    ProcessSelection(GatherInput.GetKeyedInput());
+                    break;
                 case ConsoleKey.Q:
                     Console.WriteLine();
                     Console.WriteLine();

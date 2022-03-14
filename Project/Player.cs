@@ -12,6 +12,7 @@
             Weapon weapon = new Weapon(1, 7);
             this.Weapon = weapon;
             Level = currentLevel;
+            ExperiencePoints = 9999999999;
         }
 
         public void TakeDamage(int damageAmount)
@@ -57,6 +58,7 @@
             get;private set;
         }
         public int Level { get; private set; }
+        public ulong ExperiencePoints { get; internal set; }
     }
 
 

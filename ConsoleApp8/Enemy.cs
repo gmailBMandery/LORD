@@ -3,13 +3,16 @@ namespace LORD
 {
     internal class Enemy
     {
-        private int attackStrength;
+        //Enemies will be read from file
 
-        public Enemy(string name, int hp)
+        public Enemy(string name, int hp, int attackStrength, int level)
         {
             Name = name;
             HP = hp;
             IsDead = false;
+            AttackStrength = attackStrength;
+            Level = level;
+
 
         }
 
@@ -18,7 +21,14 @@ namespace LORD
         /// </summary>
         private void Attack()
         {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            double attackModifier = rnd.NextDouble();
+            
+            AttackStrength = (int)((double)rnd.Next(1, AttackStrength) / .8);
 
+            DamageOutput = AttackStrength;
+
+            System.Diagnostics.Debug.WriteLine($"Attack Strength : {AttackStrength} : Mod : {attackModifier}");
         }
 
         public void TakeDamage(int amount)
@@ -30,9 +40,22 @@ namespace LORD
                 //Spill reward and exp
                 IsDead = true;
             }
+            else
+            {
+                Attack();
+            }
         }
 
 
+        public int AttackStrength
+        {
+            get; private set;
+        }
+
+        public int Level
+        {
+            get; private set;
+        }
         public string Name
         {
             get; private set;

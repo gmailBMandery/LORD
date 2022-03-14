@@ -13,7 +13,7 @@ namespace LORD
             //Which will be held in a file within? or external so we can add monsters and happenings on the fly
 
 
-            Enemy monster = new Enemy("Pot Belly Pig", 5);
+            Enemy monster = new Enemy("Pot Belly Pig", 5, 5,1);
 
             StartEncounter(monster);
 
@@ -21,11 +21,24 @@ namespace LORD
 
         private static void StartEncounter(Enemy monster)
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("**");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Fight");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("**");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.WriteLine($"You have encountered {monster.Name}");
+            Console.WriteLine();
             Console.WriteLine("Based on your skills, you get to attack first");
             Console.WriteLine();
-            Console.WriteLine("Your HP 20");
-            Console.WriteLine($"{monster.Name} hit points {monster.HP}");
+            Console.WriteLine($"Your Hitpoints : {Program.player.HitPoints}");
+            Console.WriteLine($"{monster.Name}'s hit points : {monster.HP}");
+            Console.WriteLine();
 
             DisplayMenu();
 
@@ -39,7 +52,7 @@ namespace LORD
             switch (input.ToUpper())
             {
                 case "A":
-                    int damageAmount = rnd.Next(5);
+                    int damageAmount = rnd.Next(Program.player.Weapon.MinDamage, Program.player.Weapon.MaxDamage+1);
                     Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
                     monster.TakeDamage(damageAmount);
                     if (monster.IsDead)
@@ -71,34 +84,46 @@ namespace LORD
         private static void DisplayMenu()
         {
             Console.WriteLine("---------------------------------------------------------------");
-            Console.Write("[");
             Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("A");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Attack!");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("ttack!");
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("[");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("S");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("]");
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine("tats!");
+            Console.ForegroundColor = ConsoleColor.Green;
 
             Console.Write("[");
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("R");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.Write("]");
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine("Run away scared!");
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("un away scared!");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("---------------------------------------------------------------");
         }
 
         private static void ContinueEncounter(Enemy monster)
         {
-            Console.WriteLine($"{monster.Name} hits you back for {GenRandomNumber.Next(1, 5)}");
+            Console.WriteLine($"{monster.Name} hits you back for {monster.DamageOutput}");
+            Program.player.TakeDamage(monster.DamageOutput);
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
 
-            Console.WriteLine($"Your hit points 20");
+            Console.WriteLine($"Your hit points {Program.player.HitPoints}");
             Console.WriteLine("**********************");
             Console.WriteLine($"{monster.Name} 's hit points {monster.HP}");
             DisplayMenu();

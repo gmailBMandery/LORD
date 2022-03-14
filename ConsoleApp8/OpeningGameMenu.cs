@@ -25,6 +25,7 @@ namespace LORD
             Console.Clear();
             if (userName.Trim().Length>0)
             {
+                Program.player = new Player(userName, 20);   
                 Console.WriteLine($"Welcome back {userName}. You are feeling under the weather today!");
                 Console.Write("Press anykey to continue to town");
                 Console.ReadKey();

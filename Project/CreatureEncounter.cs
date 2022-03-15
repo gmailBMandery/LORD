@@ -31,7 +31,7 @@ namespace LORD
         public Enemy GetEncounter()
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            return creatures[rnd.Next(0, creatures.Count + 1)];
+            return creatures[rnd.Next(0, creatures.Count)];
         }
     }
 }

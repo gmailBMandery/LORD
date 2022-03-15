@@ -54,7 +54,7 @@ namespace LORD
             switch (input.Key)
             {
                 case ConsoleKey.A:
-                    int damageAmount = rnd.Next(Program.player.Weapon.MinDamage, Program.player.Weapon.MaxDamage+1);
+                    int damageAmount = Program.player.GetDamage();
                     Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
                     monster.TakeDamage(damageAmount);
                     if (monster.IsDead)

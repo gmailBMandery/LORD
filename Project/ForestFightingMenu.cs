@@ -125,8 +125,11 @@ namespace LORD
 
         private static void ContinueEncounter(Enemy monster)
         {
-            Console.WriteLine($"{monster.Name} hits you back for {monster.DamageOutput}");
-            Program.player.TakeDamage(monster.DamageOutput);
+            if (Program.player.TakeDamage(monster.DamageOutput))
+                Console.WriteLine($"{monster.Name} hits you back for {monster.DamageOutput}.");
+            else
+                Console.WriteLine($"{monster.Name} misses you completly.");
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();

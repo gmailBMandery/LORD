@@ -9,6 +9,7 @@ namespace LORD
     class AttackDie
     {
         Random rnd = new Random(DateTime.Now.Millisecond);
+
         public AttackDie(int faces)
         {
             Faces = faces;
@@ -20,5 +21,9 @@ namespace LORD
         }
 
         public int Faces { get; private set; }
+
+        public int MinDamage { get => Faces - Faces + 1; }
+
+        public int MaxDamage { get => Faces; }
     }
 }

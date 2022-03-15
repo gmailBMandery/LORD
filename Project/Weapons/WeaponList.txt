@@ -1,1 +1,0 @@
-﻿1:Name:Stick,Cost:25,Value:12,AttackDie:1-4

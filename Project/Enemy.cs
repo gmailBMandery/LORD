@@ -5,13 +5,14 @@ namespace LORD
     {
         //Enemies will be read from file
 
-        public Enemy(string name, int hp, int attackStrength, int level)
+        public Enemy(string name, int hp, int attackStrength, int armourClass, float attackModifier)
         {
             Name = name;
             HP = hp;
             IsDead = false;
             AttackStrength = attackStrength;
-            Level = level;
+            ArmourClass = armourClass;
+            AttackModifier = attackModifier;
 
 
         }
@@ -24,7 +25,7 @@ namespace LORD
             Random rnd = new Random(DateTime.Now.Millisecond);
             double attackModifier = rnd.NextDouble();
             
-            AttackStrength = (int)((double)rnd.Next(1, AttackStrength) / .8);
+            AttackStrength = (int)((double)rnd.Next(1, AttackStrength) / AttackModifier);
 
             DamageOutput = AttackStrength;
 
@@ -33,7 +34,9 @@ namespace LORD
 
         public void TakeDamage(int amount)
         {
-            HP -= amount;
+            if(amount>ArmourClass)
+                HP -= amount;
+
             if(HP<=0)
             {
                 //This enemy is dead
@@ -52,7 +55,7 @@ namespace LORD
             get; private set;
         }
 
-        public int Level
+        public int ArmourClass
         {
             get; private set;
         }
@@ -81,5 +84,7 @@ namespace LORD
         {
             get; private set;
         }
+
+        public float AttackModifier { get; private set; }
     }
 }

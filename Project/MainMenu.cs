@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LORD
 {
@@ -142,14 +138,23 @@ namespace LORD
                 case ConsoleKey.Q:
                     Console.WriteLine();
                     Console.WriteLine();
-                    Console.WriteLine("Sorry to see you leave so soon");
-
+                    Console.CursorLeft = 3;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You have exited the realm back to the fields.");
+                    Console.ReadLine();
                     Console.ReadKey();
                     keepRunning = false;
+                    break;
+
+                case ConsoleKey.H:
+                    HealersHutScreen hhs = new HealersHutScreen();
+                    PaintMainMenu();
+                    ProcessSelection(GatherInput.GetKeyedInput());
                     break;
                     
                 default:
                     PaintMainMenu();
+                    ProcessSelection(GatherInput.GetKeyedInput());
                     break;
             }
 

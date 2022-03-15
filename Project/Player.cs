@@ -106,6 +106,15 @@ namespace LORD
 
             return totalDamage;
         }
+
+        public void HealHitPoints(int pointsToHeal, int totalCost)
+        {
+            this.Gold -= totalCost;
+            if (pointsToHeal> this.MaxHitPoints)
+                this.HitPoints = MaxHitPoints;
+            else
+                this.HitPoints += pointsToHeal;
+        }
         #endregion
 
         public float AttackModifier { get; private set; }

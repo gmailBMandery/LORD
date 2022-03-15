@@ -18,8 +18,12 @@ namespace LORD
 
         public static ConsoleKeyInfo GetKeyedInput()
         {
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.Write("Make Your Selection>>");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.CursorLeft = 3;
+            Console.Write($"Make Your Selection [{Program.player.Name}]");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.Write(">>");
             Console.ResetColor();
             return Console.ReadKey();
         }

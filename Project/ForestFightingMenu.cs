@@ -55,6 +55,7 @@ namespace LORD
             {
                 case ConsoleKey.A:
                     int damageAmount = Program.player.GetDamage();
+                    Console.WriteLine();
                     Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
                     monster.TakeDamage(damageAmount);
                     if (monster.IsDead)

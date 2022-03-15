@@ -15,11 +15,9 @@ namespace LORD
         public static Player player;
         static void Main(string[] args)
         {
-            
+
             while (runGameLoop)
-            {
                 MainGameLoop();
-            }
         }
 
         private static void MainGameLoop()

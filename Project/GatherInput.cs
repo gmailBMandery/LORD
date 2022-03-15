@@ -30,7 +30,17 @@ namespace LORD
 
         public static string GetUserName()
         {
+            Console.CursorLeft = 2;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.Write("UserName>>");
+            return Console.ReadLine();
+        }
+
+        public static string GetPassword()
+        {
+            Console.CursorLeft = 2;
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
+            Console.Write("Password>>");
             return Console.ReadLine();
         }
     }

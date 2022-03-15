@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LORD
 {
-    class ClothVest : Armour
+    internal class ClothVest : Armour
     {
         public ClothVest()
         {

@@ -10,12 +10,10 @@ namespace LORD
         {
             Name = name;
             //Go find the players information by name
-
             HitPoints = hitPoints;
 
-            
             //Get our weapon readied
-            this.Weapon = CreateWeapon(weaponID);
+            this.Weapon = Weapon.CreateWeapon(weaponID);
 
             //Get our Armour on
             this.Armour = CreateArmour(armourID);
@@ -26,12 +24,39 @@ namespace LORD
             ForestFights = 25;
             PlayerFights = 3;
             MaxHitPoints = 20;
-            Gold = 4500;
+            Gold = 50;
             GoldInBank = 12000;
             AttackStrength = 12;
             Gems = 0;
             DefensiveStrength = 1;
             AttackModifier = .2f;
+        }
+
+        public Player(string name, string password)
+        {
+            Name = name;
+            Password = password;
+
+            //set new user defaults
+            //Get our weapon readied
+            this.Weapon = Weapon.CreateWeapon(1);
+
+            //Get our Armour on
+            this.Armour = CreateArmour(1);
+            Level = 1;
+
+            //temp
+            ExperiencePoints = 0;
+            ForestFights = 25;
+            PlayerFights = 3;
+            HitPoints = 20;
+            MaxHitPoints = 20;
+            Gold = 0;
+            GoldInBank = 0;
+            AttackStrength = 1;
+            Gems = 0;
+            DefensiveStrength = 1;
+            AttackModifier = .1f;
         }
 
         private Armour CreateArmour(int armourID)
@@ -49,23 +74,6 @@ namespace LORD
             }
 
             return returnArmour;
-        }
-
-        private Weapon CreateWeapon(int weaponID)
-        {
-            Weapon returnWeapon = null;
-            switch(weaponID)
-            {
-                case (int)Weapons.WeaponIDs.STICK:
-                    returnWeapon = new Weapons.Stick();
-                    break;
-
-                case (int)Weapons.WeaponIDs.DAGGER:
-                    returnWeapon = new Weapons.Dagger();
-                    break;
-            }
-
-            return returnWeapon;
         }
 
         #region Public Methods
@@ -115,13 +123,16 @@ namespace LORD
             else
                 this.HitPoints += pointsToHeal;
         }
+
+        internal void PurchaseWeapon(Weapon w)
+        {
+            this.Weapon = w;
+            this.Gold -= w.Cost;
+        }
         #endregion
 
         public float AttackModifier { get; private set; }
-        public int HitPoints
-        {
-            get; private set;
-        }
+        public int HitPoints { get; private set; }
 
         public int MaxHitPoints
         {
@@ -133,8 +144,13 @@ namespace LORD
             get; private set;
         }
 
+        public string Password
+        { get; private set; }
+
         public Weapon Weapon { get; private set; }        
         public Armour Armour { get; private set; }
+
+
 
         public int Gold
         {

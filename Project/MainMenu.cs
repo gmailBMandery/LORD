@@ -135,6 +135,12 @@ namespace LORD
                     PaintMainMenu();
                     ProcessSelection(GatherInput.GetKeyedInput());
                     break;
+
+                case ConsoleKey.K:
+                    KingArthursWeapons kaw = new KingArthursWeapons();
+                    PaintMainMenu();
+                    ProcessSelection(GatherInput.GetKeyedInput());
+                    break;
                 case ConsoleKey.Q:
                     Console.WriteLine();
                     Console.WriteLine();

@@ -7,3 +7,4 @@ Rottingboy:5:2:1:.92
 Fetidsnake:8:2:1:.95
 Misty Frost Tiger:12:4:1:.9
 Rotting Corpse:8:3:1:.83
+Old Woman:3:1:1:.95

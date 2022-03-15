@@ -6,24 +6,19 @@ namespace LORD
     internal class Player
     {
 
-        public Player(string name, int hitPoints, int maxHitPoints, int currentLevel)
+        public Player(string name, int hitPoints, int maxHitPoints, int currentLevel, int weaponID, int armourID)
         {
             Name = name;
             //Go find the players information by name
 
             HitPoints = hitPoints;
-            AttackDie ad = new AttackDie(4);
-            AttackDie ad1 = new AttackDie(4);
-            AttackDie ad2 = new AttackDie(4);
 
-            List<AttackDie> attackDie = new List<AttackDie>();
-            attackDie.Add(ad);
-            attackDie.Add(ad1);
-            attackDie.Add(ad2);
+            
+            //Get our weapon readied
+            this.Weapon = CreateWeapon(weaponID);
 
-            Weapon weapon = new Weapon("Stick", 50, 12, attackDie);
-            this.Armour = new Armour("Iron Vest");
-            this.Weapon = weapon;
+            //Get our Armour on
+            this.Armour = CreateArmour(armourID);
             Level = currentLevel;
 
             //temp
@@ -39,15 +34,60 @@ namespace LORD
             AttackModifier = .2f;
         }
 
-        #region Public Methods
-        public void TakeDamage(int damageAmount)
+        private Armour CreateArmour(int armourID)
         {
-            HitPoints -= damageAmount;
-            if(HitPoints<=0)
+            Armour returnArmour = null;
+            switch(armourID)
             {
-                //Player is dead
-                //Tell a sad story, let them know they lost all gold on hand and 10% of experiance
+                case (int)ArmourID.CLOTH_VEST:
+                    returnArmour = new ClothVest();
+                    break;
+
+                case (int)ArmourID.LEATHER_VEST:
+                    returnArmour = new LeatherVest();
+                    break;
             }
+
+            return returnArmour;
+        }
+
+        private Weapon CreateWeapon(int weaponID)
+        {
+            Weapon returnWeapon = null;
+            switch(weaponID)
+            {
+                case (int)Weapons.WeaponIDs.STICK:
+                    returnWeapon = new Weapons.Stick();
+                    break;
+
+                case (int)Weapons.WeaponIDs.DAGGER:
+                    returnWeapon = new Weapons.Dagger();
+                    break;
+            }
+
+            return returnWeapon;
+        }
+
+        #region Public Methods
+        public Boolean TakeDamage(int damageAmount)
+        {
+            if (damageAmount > Armour.Class)
+            {
+                HitPoints -= damageAmount;
+                if (HitPoints <= 0)
+                {
+                    //Player is dead
+                    //Tell a sad story, let them know they lost all gold on hand and 10% of experiance
+                }
+                return true;
+            }
+            else
+            {
+                //Console.WriteLine("That is a miss");
+                return false;
+            }
+
+
         }
 
         public void RestoreHitPoints(int restoreAmount)

@@ -12,9 +12,16 @@ namespace LORD
         private List<Enemy> creatures = new List<Enemy>();
         public CreatureEncounter(int playerLevel)
         {
+            if (creatures.Count > 0)
+                return;
+
             Stream readCreatures = new FileStream($"Creatures\\Level{playerLevel.ToString()}.txt", FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(readCreatures);
             string creatureDataLine = string.Empty;
+
+            //Skip the first line as it is a head row
+            reader.ReadLine();
+
             while(reader.Peek() > 0)
             {
                 creatureDataLine = reader.ReadLine();
@@ -22,7 +29,7 @@ namespace LORD
 
                 for(int x = 0; x<creatureData.Length; x++)
                 {
-                    Enemy e = new Enemy(creatureData[0], Int32.Parse(creatureData[1]), Int32.Parse(creatureData[2]), Int32.Parse(creatureData[3]));
+                    Enemy e = new Enemy(creatureData[0], Int32.Parse(creatureData[1]), Int32.Parse(creatureData[2]), Int32.Parse(creatureData[3]), float.Parse(creatureData[4]));
                     creatures.Add(e);
                 }
             }

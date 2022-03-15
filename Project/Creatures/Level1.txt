@@ -1,8 +1,9 @@
-﻿Pot Belly Pig:5:5:1
-Rude Boy:10:5:1
-Black Spider:4:2:1
-Stone Giant:6:3:1
-Rottingboy:5:2:1
-Fetidsnake:8:2:1
-Misty Frost Tiger:12:4:1
-Rotting Corpse:8:3:1
+﻿--Name:HitPoints:AttackStrength:ArmourClass:Attack Modifier
+Pot Belly Pig:5:5:2:.9
+Rude Boy:10:5:1:.81
+Black Spider:4:2:1:.95
+Stone Giant:6:3:2:.79
+Rottingboy:5:2:1:.92
+Fetidsnake:8:2:1:.95
+Misty Frost Tiger:12:4:1:.9
+Rotting Corpse:8:3:1:.83

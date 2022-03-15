@@ -147,6 +147,12 @@ namespace LORD
                     Console.ReadKey();
                     keepRunning = false;
                     break;
+
+                case ConsoleKey.H:
+                    HealersHutScreen hhs = new HealersHutScreen();
+                    PaintMainMenu();
+                    ProcessSelection(GatherInput.GetKeyedInput());
+                    break;
                     
                 default:
                     PaintMainMenu();

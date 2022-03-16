@@ -16,7 +16,7 @@ namespace LORD
             this.Weapon = Weapon.CreateWeapon(weaponID);
 
             //Get our Armour on
-            this.Armour = CreateArmour(armourID);
+            this.ArmourDress = Armour.CreateArmour((ArmourIDs)armourID);
             Level = currentLevel;
 
             //temp
@@ -42,7 +42,7 @@ namespace LORD
             this.Weapon = Weapon.CreateWeapon(1);
 
             //Get our Armour on
-            this.Armour = CreateArmour(1);
+            this.ArmourDress = Armour.CreateArmour((ArmourIDs)1);
             Level = 1;
 
             //temp
@@ -53,38 +53,21 @@ namespace LORD
             MaxHitPoints = 20;
             Gold = 0;
             GoldInBank = 0;
-            AttackStrength = 1;
+            AttackStrength = 0;
             Gems = 0;
-            DefensiveStrength = 1;
+            DefensiveStrength = 0;
             AttackModifier = .1f;
-        }
-
-        private Armour CreateArmour(int armourID)
-        {
-            Armour returnArmour = null;
-            switch(armourID)
-            {
-                case (int)ArmourID.CLOTH_VEST:
-                    returnArmour = new ClothVest();
-                    break;
-
-                case (int)ArmourID.LEATHER_VEST:
-                    returnArmour = new LeatherVest();
-                    break;
-            }
-
-            return returnArmour;
         }
 
         #region Public Methods
         public Boolean TakeDamage(int damageAmount)
         {
-            if (damageAmount > Armour.Class)
+            if (damageAmount >= ArmourDress.CalculateArmourClass(this.DefensiveStrength))
             {
                 HitPoints -= damageAmount;
                 if (HitPoints <= 0)
                 {
-                    //Player is dead
+                    //Player is dead6
                     //Tell a sad story, let them know they lost all gold on hand and 10% of experiance
                 }
                 return true;
@@ -148,7 +131,7 @@ namespace LORD
         { get; private set; }
 
         public Weapon Weapon { get; private set; }        
-        public Armour Armour { get; private set; }
+        public Armour ArmourDress { get; private set; }
 
 
 

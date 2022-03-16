@@ -46,7 +46,7 @@ namespace LORD
                 Program.player = new Player(UserName, Password);
                 Player p = Program.player;
                 ReadWritePlayer rwPlayer = new ReadWritePlayer(UserName, Password, p.ExperiencePoints
-                    , p.Level, p.Gold, p.GoldInBank, p.Weapon.WeaponID, p.Armour.ArmourID
+                    , p.Level, p.Gold, p.GoldInBank, p.Weapon.WeaponID, p.ArmourDress.ArmourID
                     , p.AttackStrength, p.DefensiveStrength, p.HitPoints, p.Charm, p.Gems
                     , p.PlayerFights, p.ForestFights, 0, p.AttackModifier);
 

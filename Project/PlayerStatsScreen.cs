@@ -108,7 +108,7 @@ namespace LORD
             Console.CursorLeft = 15;
             Console.Write(" : ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"{player.Armour.Name.ToUpper()}");
+            Console.Write($"{player.ArmourDress.Name.ToUpper()}");
 
             //Defensive Strength
             Console.CursorLeft = 35;

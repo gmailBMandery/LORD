@@ -68,7 +68,7 @@ namespace LORD
                     }
                     else
                     {
-                        Console.WriteLine($"The {monster.Name} is not dead!");
+                        //Console.WriteLine($"The {monster.Name} is not dead!");
                         ContinueEncounter(monster);
                     }
 

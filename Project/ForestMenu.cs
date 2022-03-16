@@ -58,7 +58,8 @@ namespace LORD
 
                 case ConsoleKey.H:
                     //Show healers hut menu, for now just restore all hitpoints to the player.
-                    Program.player.RestoreHitPoints(20);
+                    HealersHutScreen hhs = new HealersHutScreen();
+                    ShowMenu();
                     break;
                 case ConsoleKey.R:
                     Console.WriteLine("Returning to town.");

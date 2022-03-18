@@ -23,9 +23,9 @@ namespace LORD.Weapons
 
         }
 
-        public override int GetDamage()
+        public override int GetDamage(Boolean critHit)
         {
-            return base.GetDamage();
+            return base.GetDamage(critHit);
         }
 
 

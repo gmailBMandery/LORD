@@ -12,12 +12,24 @@ namespace LORD
         {
         }
 
-        public virtual int GetDamage()
+        public virtual int GetDamage(Boolean critHit)
         {
             int totalDamage = 0;
-            foreach(AttackDie ad in AttackDie)
-                totalDamage += ad.Roll();
+            int x = 2;
+            //If we crit hit, roll double the damage die
+            do
+            {
+                foreach (AttackDie ad in AttackDie)
+                    totalDamage += ad.Roll();
 
+                if (!critHit)//Break out of the loop
+                    break;
+
+                x--;
+            }
+            while (x != 0);
+
+            System.Diagnostics.Debug.WriteLine($"Total Damage: {totalDamage}");
             return totalDamage;
         }
 

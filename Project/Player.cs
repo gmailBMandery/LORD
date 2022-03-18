@@ -26,7 +26,7 @@ namespace LORD
             MaxHitPoints = 20;
             Gold = 50;
             GoldInBank = 12000;
-            AttackStrength = 12;
+            AttackStrength = 1;
             Gems = 0;
             DefensiveStrength = 1;
             AttackModifier = .2f;
@@ -89,12 +89,13 @@ namespace LORD
                 HitPoints += restoreAmount;
         }
 
-        public int GetDamage()
+        public int GetDamage(Boolean crit)
         {
-            int weaponDamage = Weapon.GetDamage();
-            int subDamage = (AttackStrength * weaponDamage);
-            int totalDamage = (int)(subDamage * AttackModifier);
+            int weaponDamage = Weapon.GetDamage(crit);
+            int subDamage = (AttackStrength + weaponDamage);
+            int totalDamage = (int)Math.Round(Math.Abs(((subDamage * AttackModifier)+weaponDamage)),0);
 
+            System.Diagnostics.Debug.WriteLine($"GetDamage = {totalDamage}");
             return totalDamage;
         }
 

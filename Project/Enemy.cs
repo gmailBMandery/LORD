@@ -12,7 +12,7 @@ namespace LORD
             IsDead = false;
             AttackStrength = attackStrength;
             ArmourClass = armourClass;
-            AttackModifier = attackModifier;
+            AttackModifier = attackModifier; // Added to D20 roll to see if enemy can hit.
 
 
         }

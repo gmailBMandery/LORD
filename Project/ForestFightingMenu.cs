@@ -59,7 +59,7 @@ namespace LORD
                     //This will be done with a d20
                     int canHit = DieRoll.D20(); // 20 is an auto Crit Hit
                     Boolean crit = false;
-                    if (canHit > monster.ArmourClass)
+                    if (canHit >= monster.ArmourClass)
                     {
                         //Check for crit hit
                         crit = DieRoll.Crit();
@@ -109,6 +109,7 @@ namespace LORD
 
         private static void ContinueEncounter(Enemy monster)
         {
+            
             if (Program.player.TakeDamage(monster.DamageOutput))
             {
 

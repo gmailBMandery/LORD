@@ -29,7 +29,18 @@ namespace LORD
 
                 for(int x = 0; x<creatureData.Length; x++)
                 {
-                    Enemy e = new Enemy(creatureData[0], Int32.Parse(creatureData[1]), Int32.Parse(creatureData[2]), Int32.Parse(creatureData[3]), float.Parse(creatureData[4]));
+                    Enemy e = new Enemy(
+                                creatureData[0], 
+                                Int32.Parse(creatureData[1]),   //Hit points
+                                Int32.Parse(creatureData[2]),   //Attack Strength
+                                Int32.Parse(creatureData[3]),   //Armour Class
+                                float.Parse(creatureData[4]),   //Attack Modifier 
+                                Int32.Parse(creatureData[5]),   //Min Xp
+                                Int32.Parse(creatureData[6]),   //Max XP
+                                Int32.Parse(creatureData[7]),   //Min Gold
+                                Int32.Parse(creatureData[8])    //Max Gold
+
+                                );
                     creatures.Add(e);
                 }
             }

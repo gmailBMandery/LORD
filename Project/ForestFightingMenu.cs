@@ -73,7 +73,7 @@ namespace LORD
                         {
                             Console.WriteLine($"The {monster.Name} is dead!");
                             //The reward will be gold and experiance
-                            Console.WriteLine("This is your reward, */*-/*-/-/-*/-*/-*");
+                            Console.WriteLine($"Your gain {monster.GoldReward} gold, and {monster.XPReward} experiance points.");
                             Console.Write("Press anykey to continue");
                             Console.ReadKey();//If monster is not dead, he/she will hit and the process will repeat
                         }

@@ -108,6 +108,15 @@ namespace LORD
                 this.HitPoints += pointsToHeal;
         }
 
+        public void AddReward(int GoldAmount, ulong ExperienceAmount)
+        {
+            if (GoldAmount < 0 || ExperienceAmount < 0)
+                return;
+
+            this.Gold += GoldAmount;
+            this.ExperiencePoints += ExperienceAmount;
+        }
+
         internal void PurchaseWeapon(Weapon w)
         {
             this.Weapon = w;

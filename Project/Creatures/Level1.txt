@@ -1,4 +1,4 @@
-﻿--Name:HitPoints:AttackStrength:ArmourClass:Attack Modifier:MinXP:MaxXP:MinGold:MaxGold
+﻿Name:HitPoints:AttackStrength:ArmourClass:Attack Modifier:MinXP:MaxXP:MinGold:MaxGold
 Pot Belly Pig:5:5:2:.9:10:25:9:15
 Rude Boy:10:5:1:.81:15:25:14:37
 Black Spider:4:2:1:.95:5:8:3:9

@@ -36,6 +36,7 @@ namespace LORD
         {
             this.Name = Name;
             this.Password = Password;
+            PlayerReady = false;
 
             if (NewUser)
             {
@@ -63,6 +64,26 @@ namespace LORD
                 sw.Write(player);
                 sw.Close();
                 sw.Dispose();
+                PlayerReady = true;
+            }
+            else
+            {
+                try
+                {
+                    StreamReader sr = new StreamReader($"c:\\lord\\users\\{Name}.json");
+                    string playerData = sr.ReadToEnd();
+                    Player p = JsonConvert.DeserializeObject<Player>(playerData);
+                    sr.Close();
+                    sr.Dispose();
+
+                    PlayerReady = true;
+                }
+                catch(FileNotFoundException noUser)
+                {
+                    Console.WriteLine("You don't seem to exists, are you a new user?");
+                    Console.ReadKey();
+                    PlayerReady = false;
+                }
             }
         }
 
@@ -165,6 +186,8 @@ namespace LORD
         public int Gems { get; private set; }
         public int Charm { get; private set; }
         public int DefensiveStrength { get; private set; }
+
+        public Boolean PlayerReady { get; private set; }
 
 
     }

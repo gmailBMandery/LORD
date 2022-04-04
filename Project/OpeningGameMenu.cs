@@ -59,15 +59,23 @@ namespace LORD
             if (userName.Trim().Length>0)
             {
                 //All player data will of course be read from a file.
-                Weapon playerWeapon = Weapon.CreateWeapon(Weapons.WeaponIDs.SHORT_SWORD);
-                Armour playerArmour = Armour.CreateArmour(ArmourIDs.COAT);
+
 
                 Program.player = new Player(UserName, Password);
 
-                string jsonPlayer = JsonConvert.SerializeObject(Program.player);
-                Console.WriteLine($"Welcome back {UserName}. You are feeling under the weather today!");
-                Console.Write("Press anykey to continue to town");
-                Console.ReadKey();
+                if(Program.player.PlayerReady)
+                {
+                    Weapon playerWeapon = Weapon.CreateWeapon(Weapons.WeaponIDs.SHORT_SWORD);
+                    Armour playerArmour = Armour.CreateArmour(ArmourIDs.COAT);
+
+                    Console.WriteLine($"Welcome back {UserName}. You are feeling under the weather today!");
+                    Console.Write("Press anykey to continue to town");
+                    Console.ReadKey();
+                }
+                else
+                {
+
+                }
             }
         }
 

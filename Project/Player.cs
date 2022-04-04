@@ -1,62 +1,69 @@
 ﻿using System;
-using System.Collections.Generic;
-
+using Newtonsoft.Json;
+using System.IO;
 namespace LORD
 {
     internal class Player
     {
 
-        public Player(string name, int hitPoints, int maxHitPoints, int currentLevel, int weaponID, int armourID)
+        //public Player(string name, int hitPoints, int maxHitPoints, int currentLevel, Weapon weapon, Armour armour)
+        //{
+        //    Name = name;
+        //    //Go find the players information by name
+        //    HitPoints = hitPoints;
+
+        //    //Get our weapon readied
+        //    this.Weapon = weapon;//Weapon.CreateWeapon((Weapons.WeaponIDs)weapon.WeaponID);
+
+        //    //Get our Armour on
+        //    this.ArmourDress = armour;//Armour.CreateArmour((ArmourIDs)armourID);
+        //    Level = currentLevel;
+
+        //    //temp
+        //    ExperiencePoints = 0;
+        //    ForestFights = 25;
+        //    PlayerFights = 3;
+        //    MaxHitPoints = 20;
+        //    Gold = 50;
+        //    GoldInBank = 12000;
+        //    AttackStrength = 1;
+        //    Gems = 0;
+        //    DefensiveStrength = 1;
+        //    AttackModifier = .2f;
+        //}
+
+        public Player(string Name, string Password, Boolean NewUser=false)
         {
-            Name = name;
-            //Go find the players information by name
-            HitPoints = hitPoints;
+            this.Name = Name;
+            this.Password = Password;
 
-            //Get our weapon readied
-            this.Weapon = Weapon.CreateWeapon(weaponID);
+            if (NewUser)
+            {
+                //Get our weapon readied
+                this.Weapon = Weapon.CreateWeapon(Weapons.WeaponIDs.STICK);
 
-            //Get our Armour on
-            this.ArmourDress = Armour.CreateArmour((ArmourIDs)armourID);
-            Level = currentLevel;
+                //Get our Armour on
+                this.ArmourDress = Armour.CreateArmour(ArmourIDs.COAT);
 
-            //temp
-            ExperiencePoints = 0;
-            ForestFights = 25;
-            PlayerFights = 3;
-            MaxHitPoints = 20;
-            Gold = 50;
-            GoldInBank = 12000;
-            AttackStrength = 1;
-            Gems = 0;
-            DefensiveStrength = 1;
-            AttackModifier = .2f;
-        }
+                Level = 1;
+                ExperiencePoints = 0;
+                ForestFights = 25;
+                PlayerFights = 3;
+                HitPoints = 20;
+                MaxHitPoints = 20;
+                Gold = 0;
+                GoldInBank = 0;
+                AttackStrength = 0;
+                Gems = 0;
+                DefensiveStrength = 0;
+                AttackModifier = .1f;
 
-        public Player(string name, string password)
-        {
-            Name = name;
-            Password = password;
-
-            //set new user defaults
-            //Get our weapon readied
-            this.Weapon = Weapon.CreateWeapon(1);
-
-            //Get our Armour on
-            this.ArmourDress = Armour.CreateArmour((ArmourIDs)1);
-            Level = 1;
-
-            //temp
-            ExperiencePoints = 0;
-            ForestFights = 25;
-            PlayerFights = 3;
-            HitPoints = 20;
-            MaxHitPoints = 20;
-            Gold = 0;
-            GoldInBank = 0;
-            AttackStrength = 0;
-            Gems = 0;
-            DefensiveStrength = 0;
-            AttackModifier = .1f;
+                string player = JsonConvert.SerializeObject(this);
+                StreamWriter sw = new StreamWriter($"c:\\lord\\users\\{this.Name}.json");
+                sw.Write(player);
+                sw.Close();
+                sw.Dispose();
+            }
         }
 
         #region Public Methods
@@ -158,6 +165,8 @@ namespace LORD
         public int Gems { get; private set; }
         public int Charm { get; private set; }
         public int DefensiveStrength { get; private set; }
+
+
     }
 
 

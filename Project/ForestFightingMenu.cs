@@ -67,13 +67,13 @@ namespace LORD
 
                         Console.WriteLine();
                         Console.WriteLine((crit == true ? "Critital Hit" : "")); ;
-                        Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
+                        Console.WriteLine($"You slash at {monster.Name} and hit for {damageAmount}.");
                         monster.TakeDamage(damageAmount);
                         if (monster.IsDead)
                         {
-                            Console.WriteLine($"The {monster.Name} is dead!");
+                            Console.WriteLine($"{monster.Name} is dead!");
                             //The reward will be gold and experiance
-                            Console.WriteLine($"Your gain {monster.GoldReward} gold, and {monster.XPReward} experiance points.");
+                            Console.WriteLine($"You gain {monster.GoldReward} gold, and {monster.XPReward} experiance points.");
                             /*
                                 add to players stats
                              */

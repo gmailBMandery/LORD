@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Newtonsoft.Json;
 
 namespace LORD
 {
@@ -43,31 +44,28 @@ namespace LORD
                 Console.Write("Provide a password >>");
                 Password = Console.ReadLine();
 
-                Program.player = new Player(UserName, Password);
-                Player p = Program.player;
-                ReadWritePlayer rwPlayer = new ReadWritePlayer(UserName, Password, p.ExperiencePoints
-                    , p.Level, p.Gold, p.GoldInBank, p.Weapon.WeaponID, p.ArmourDress.ArmourID
-                    , p.AttackStrength, p.DefensiveStrength, p.HitPoints, p.Charm, p.Gems
-                    , p.PlayerFights, p.ForestFights, 0, p.AttackModifier);
-
-                IFormatter formatter = new BinaryFormatter();
-                Stream writeStream = new FileStream($"C:\\lord\\users\\{UserName}.txt", FileMode.Create, FileAccess.Write);
-                formatter.Serialize(writeStream, rwPlayer);
-                writeStream.Close();
+                Program.player = new Player(UserName, Password,true);
+ 
 
                 Console.Clear();
                 Console.CursorLeft = 2;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"Welcome, {UserName}. Adventure awaits beyond these gates!");
-                Console.WriteLine("Press anykey continue to town square");
+                Console.WriteLine("Press anykey continue to town square.");
                 return;
 
             }
 
             if (userName.Trim().Length>0)
             {
-                Program.player = new Player(userName, 15,20,1,2,1);   
-                Console.WriteLine($"Welcome back {userName}. You are feeling under the weather today!");
+                //All player data will of course be read from a file.
+                Weapon playerWeapon = Weapon.CreateWeapon(Weapons.WeaponIDs.SHORT_SWORD);
+                Armour playerArmour = Armour.CreateArmour(ArmourIDs.COAT);
+
+                Program.player = new Player(UserName, Password);
+
+                string jsonPlayer = JsonConvert.SerializeObject(Program.player);
+                Console.WriteLine($"Welcome back {UserName}. You are feeling under the weather today!");
                 Console.Write("Press anykey to continue to town");
                 Console.ReadKey();
             }

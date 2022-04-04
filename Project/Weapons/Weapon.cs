@@ -48,68 +48,68 @@ namespace LORD
             return base.ToString();
         }
 
-        public static Weapon CreateWeapon(int weaponID)
+        public static Weapon CreateWeapon(Weapons.WeaponIDs weaponID)
         {
             Weapon returnWeapon = null;
             switch (weaponID)
             {
-                case (int)Weapons.WeaponIDs.STICK:
+                case Weapons.WeaponIDs.STICK:
                     returnWeapon = new Weapons.Stick(); //1D4 Max Base 4
                     break;
 
-                case (int)Weapons.WeaponIDs.DAGGER:
+                case Weapons.WeaponIDs.DAGGER:
                     returnWeapon = new Weapons.Dagger(); //1D6 Max Base 6
                     break;
 
-                case (int)Weapons.WeaponIDs.SHORT_SWORD:
+                case Weapons.WeaponIDs.SHORT_SWORD:
                     returnWeapon = new Weapons.ShortSword(); //1D8 Max Base 8
                     break;
 
-                case (int)Weapons.WeaponIDs.LONG_SWORD:
+                case Weapons.WeaponIDs.LONG_SWORD:
                     returnWeapon = new Weapons.LongSword(); //1D10-1D4 Max Base 14
                     break;
 
-                case (int)Weapons.WeaponIDs.HUGE_AXE:
+                case Weapons.WeaponIDs.HUGE_AXE:
                     returnWeapon = new Weapons.HugeAxe(); //2D8-1D4 Max Base 20
                     break;
 
-                case (int)Weapons.WeaponIDs.BONE_CRUNCHER:
+                case Weapons.WeaponIDs.BONE_CRUNCHER:
                     returnWeapon = new Weapons.BoneCruncher(); //2D8 - 1D4 - 1D6 Max Bose 20
                     break;
 
-                case (int)Weapons.WeaponIDs.TWIN_SWORDS:
+                case Weapons.WeaponIDs.TWIN_SWORDS:
                     returnWeapon = new Weapons.TwinSwords(); //2D10 - 1D4// Max Base 24
                     break;
 
-                case (int)Weapons.WeaponIDs.POWER_AXE:
+                case Weapons.WeaponIDs.POWER_AXE:
                     returnWeapon = new Weapons.PowerAxe(); //2D10 - 1D8 Max Base 28
                     break;
 
-                case (int)Weapons.WeaponIDs.ABLES_SWORD:
+                case Weapons.WeaponIDs.ABLES_SWORD:
                     returnWeapon = new Weapons.AblesSword(); //3D10 - 1D6 Max Base 36
                     break;
 
-                case (int)Weapons.WeaponIDs.WANS_WEAPON:
+                case Weapons.WeaponIDs.WANS_WEAPON:
                     returnWeapon = new Weapons.WansWeapon(); //4D8 - 2D6 Max Base 44
                     break;
 
-                case (int)Weapons.WeaponIDs.SPEAR_OF_GOLD:
+                case Weapons.WeaponIDs.SPEAR_OF_GOLD:
                     returnWeapon = new Weapons.SpearOfGold(); // 4D10 - 1D8 Max base 48
                     break;
 
-                case (int)Weapons.WeaponIDs.CRYSTAL_SHARD:
+                case Weapons.WeaponIDs.CRYSTAL_SHARD:
                     returnWeapon = new Weapons.CrystalShard(); // 2D20 - 2D10 // Max Base 60
                     break;
 
-                case (int)Weapons.WeaponIDs.NIRASS_TEETH:
+                case Weapons.WeaponIDs.NIRASS_TEETH:
                     returnWeapon = new Weapons.NirassTeeth(); // 3D20 - 2D10 - 1D6 // Max Base 86
                     break;
 
-                case (int)Weapons.WeaponIDs.BLOOD_SWORD:
+                case Weapons.WeaponIDs.BLOOD_SWORD:
                     returnWeapon = new Weapons.BloodSword(); //4D20 - 3D10 - 2D6 - 1D4 Max Base 122
                     break;
 
-                case (int)Weapons.WeaponIDs.DEATH_SWORD:
+                case Weapons.WeaponIDs.DEATH_SWORD:
                     returnWeapon = new Weapons.DeathSword(); // 4D20 - 4D10 - 4D6 - 2D4  Max Base 152
                     break;
             }

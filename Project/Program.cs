@@ -14,13 +14,12 @@ namespace LORD
     {
         private static Boolean runGameLoop = true;
         public static Player player;
-        private static string gameDirectory = "c:\\lord";
-        private static string userDirectory = "\\users";
+        public static string fileLocation = "\\\\netstorage.acs.alkota.com\\network\\lord\\users\\";
         static void Main(string[] args)
         {
 
             //Check to see if we have the correct game directories created.
-            DirectoryInfo di = new DirectoryInfo(gameDirectory+userDirectory);
+            DirectoryInfo di = new DirectoryInfo(fileLocation);
             if (!di.Exists)
                 di.Create();
 

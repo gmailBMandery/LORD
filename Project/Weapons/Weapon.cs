@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LORD
 {
-    abstract class Weapon
+    public abstract class Weapon
     {
         public Weapon()
         {
@@ -116,5 +117,7 @@ namespace LORD
 
             return returnWeapon;
         }
+
+        public abstract Weapons.WeaponIDs Type { get; }
     }
 }

@@ -8,5 +8,6 @@ namespace LORD.Weapons
 {
     internal class HugeAxe : Weapon
     {
+        public override WeaponIDs Type => throw new NotImplementedException();
     }
 }

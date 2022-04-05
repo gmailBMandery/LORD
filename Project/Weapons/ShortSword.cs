@@ -20,5 +20,7 @@ namespace LORD.Weapons
             attackDie.Add(ad);
             base.AttackDie = attackDie;
         }
+
+        public override WeaponIDs Type => throw new NotImplementedException();
     }
 }

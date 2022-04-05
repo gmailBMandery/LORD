@@ -29,7 +29,7 @@ namespace LORD.Weapons
         }
 
 
-
+        public override WeaponIDs Type => WeaponIDs.STICK;
 
 
 

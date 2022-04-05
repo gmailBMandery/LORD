@@ -18,6 +18,7 @@ namespace LORD
             Enemy monster = encounter.GetEncounter();
 
             StartEncounter(monster);
+            Program.player.ReduceForestFights(1);
 
         }
 

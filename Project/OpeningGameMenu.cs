@@ -59,24 +59,42 @@ namespace LORD
             if (userName.Trim().Length>0)
             {
                 //All player data will of course be read from a file.
-
-
-                Program.player = new Player(UserName, Password);
+                //Program.player = new Player(UserName, Password);
+                if (this.DoesPlayerFileExists())
+                {
+                    Program.player = new Player();
+                    Program.player = Program.player.LoadPlayerData(UserName, Password);
+                }
+                else
+                {
+                    //new User
+                    Console.WriteLine("User not found.");
+                    Console.Write("press anykey to login again.");
+                    Console.ReadKey();
+                    this.ShowMenu();
+                }
 
                 if(Program.player.PlayerReady)
                 {
-                    Weapon playerWeapon = Weapon.CreateWeapon(Weapons.WeaponIDs.SHORT_SWORD);
-                    Armour playerArmour = Armour.CreateArmour(ArmourIDs.COAT);
-
                     Console.WriteLine($"Welcome back {UserName}. You are feeling under the weather today!");
                     Console.Write("Press anykey to continue to town");
                     Console.ReadKey();
                 }
                 else
                 {
-
+                    Console.WriteLine("Password invalid, press anykey to login again.");
+                    Console.ReadKey();
+                    this.ShowMenu();
                 }
             }
+        }
+
+        private Boolean DoesPlayerFileExists()
+        {
+            if (File.Exists($"{Program.fileLocation}{this.UserName}.json"))
+                return true;
+            else
+                return false;
         }
 
         public string UserName { get; private set; }

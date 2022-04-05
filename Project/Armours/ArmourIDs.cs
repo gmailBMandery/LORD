@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LORD
 {
-    enum ArmourIDs
+    public enum ArmourIDs
     {
         COAT = 1
             , HEAVY_COAT = 2

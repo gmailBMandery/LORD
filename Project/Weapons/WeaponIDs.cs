@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LORD.Weapons
 {
-    enum WeaponIDs
+    public enum WeaponIDs
     {
         STICK = 1
             , DAGGER = 2

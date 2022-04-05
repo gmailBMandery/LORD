@@ -76,7 +76,7 @@ namespace LORD
             }
 
             Weapon w = Weapon.CreateWeapon((Weapons.WeaponIDs)weaponSelection);
-            if(w.Cost<Program.player.Gold && Program.player.Weapon == null)
+            if(w.Cost<Program.player.Gold && Program.player.WeaponType == 0)
             {
                 //Yes we can purchase this weapon
                 Program.player.PurchaseWeapon(w);

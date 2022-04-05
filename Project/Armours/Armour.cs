@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LORD
 {
-    abstract class Armour
+    public abstract class Armour
     {
         public int ArmourID { get; internal set; }
         public string Name { get; internal set; }

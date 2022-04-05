@@ -21,6 +21,8 @@ namespace LORD.Weapons
             base.AttackDie = attackDie;
         }
 
+        public override WeaponIDs Type => throw new NotImplementedException();
+
         public override int GetDamage(Boolean critHit)
         {
             return base.GetDamage(critHit);

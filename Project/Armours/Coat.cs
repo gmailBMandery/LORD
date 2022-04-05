@@ -4,18 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LORD
+namespace LORD.Armours
 {
-    internal class ClothVest : Armour
+    class Coat : Armour
     {
-        public ClothVest()
+        public Coat()
         {
             base.ArmourID = 1;
             base.Class = 1;
-            base.Cost = 50;
-            base.Value = 12;
-            base.Name = "Cloth Vest";
+            base.Cost = 200;
+            base.Value = 25;
+            base.Name = "Coat";
+            base.DefenseModifier = .05f;
+            
         }
-        
     }
 }

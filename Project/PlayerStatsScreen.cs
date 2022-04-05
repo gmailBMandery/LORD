@@ -89,7 +89,7 @@ namespace LORD
             Console.CursorLeft = 15;
             Console.Write(" : ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"{player.Weapon.Name.ToUpper()}");
+            Console.Write($"{Weapon.CreateWeapon((Weapons.WeaponIDs)player.WeaponType).Name.ToUpper()}");
 
 
             //Attack Strength
@@ -108,7 +108,7 @@ namespace LORD
             Console.CursorLeft = 15;
             Console.Write(" : ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write($"{player.Armour.Name.ToUpper()}");
+            Console.Write($"{Armour.CreateArmour((ArmourIDs)player.ArmourType).Name.ToUpper()}");
 
             //Defensive Strength
             Console.CursorLeft = 35;

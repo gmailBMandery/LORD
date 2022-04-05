@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LORD
 {
-    class AttackDie
+    public  class AttackDie
     {
         Random rnd = new Random(DateTime.Now.Millisecond);
 

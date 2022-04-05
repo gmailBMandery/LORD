@@ -18,6 +18,7 @@ namespace LORD
             Enemy monster = encounter.GetEncounter();
 
             StartEncounter(monster);
+            Program.player.ReduceForestFights(1);
 
         }
 
@@ -36,7 +37,7 @@ namespace LORD
 
             Console.WriteLine($"You have encountered {monster.Name}");
             Console.WriteLine();
-            Console.WriteLine("Based on your skills, you get to attack first");
+            Console.WriteLine("Based on your skills, you get to attack first");//Not sure what we will use to calculate this yet
             Console.WriteLine();
             Console.WriteLine($"Your Hitpoints : {Program.player.HitPoints}");
             Console.WriteLine($"{monster.Name}'s hit points : {monster.HP}");
@@ -51,27 +52,48 @@ namespace LORD
 
         private static void ProcessInput(Enemy monster, ConsoleKeyInfo input, Random rnd)
         {
+            int damageAmount = 0;
             switch (input.Key)
             {
                 case ConsoleKey.A:
-                    int damageAmount = Program.player.GetDamage();
-                    Console.WriteLine();
-                    Console.WriteLine($"You lash at the {monster.Name} and hit for {damageAmount}");
-                    monster.TakeDamage(damageAmount);
-                    if (monster.IsDead)
+                    //First we must roll to see if we can even hit the enemy
+                    //This will be done with a d20
+                    int canHit = DieRoll.D20(); // 20 is an auto Crit Hit
+                    Boolean crit = false;
+                    if (canHit >= monster.ArmourClass)
                     {
-                        Console.WriteLine($"The {monster.Name} is dead!");
-                        //The reward will be gold and experiance
-                        Console.WriteLine("This is your reward, */*-/*-/-/-*/-*/-*");
-                        Console.Write("Press anykey to continue");
-                        Console.ReadKey();//If monster is not dead, he/she will hit and the process will repeat
+                        //Check for crit hit
+                        crit = DieRoll.Crit();
+                        damageAmount = Program.player.GetDamage(crit);
+
+                        Console.WriteLine();
+                        Console.WriteLine((crit == true ? "Critital Hit" : "")); ;
+                        Console.WriteLine($"You slash at {monster.Name} and hit for {damageAmount}.");
+                        monster.TakeDamage(damageAmount);
+                        if (monster.IsDead)
+                        {
+                            Console.WriteLine($"{monster.Name} is dead!");
+                            //The reward will be gold and experiance
+                            Console.WriteLine($"You gain {monster.GoldReward} gold, and {monster.XPReward} experiance points.");
+                            /*
+                                add to players stats
+                             */
+                            LORD.Program.player.AddReward(monster.GoldReward, (ulong)monster.XPReward);
+                            Console.Write("Press anykey to continue");
+                            Console.ReadKey();//If monster is not dead, he/she will hit and the process will repeat
+                        }
+                        else
+                        {
+                            //Console.WriteLine($"The {monster.Name} is not dead!");
+                            ContinueEncounter(monster);
+                        }
                     }
                     else
                     {
-                        Console.WriteLine($"The {monster.Name} is not dead!");
+                        Console.WriteLine();
+                        Console.WriteLine($"You missed {monster.Name} completly!");
                         ContinueEncounter(monster);
                     }
-
 
                     break;
 
@@ -88,6 +110,33 @@ namespace LORD
                 default:
                     break;
             }
+        }
+
+        private static void ContinueEncounter(Enemy monster)
+        {
+            
+            if (Program.player.TakeDamage(monster.DamageOutput))
+            {
+
+                Console.Write($"{monster.Name} hits you back for ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{monster.DamageOutput}.");
+                Console.ForegroundColor = ConsoleColor.Green;
+            }
+            else
+                Console.WriteLine($"{monster.Name} misses you completly.");
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine($"Your hit points {Program.player.HitPoints}");
+            Console.WriteLine("**********************");
+            Console.WriteLine($"{monster.Name} 's hit points {monster.HP}");
+            DisplayMenu();
+            ConsoleKeyInfo keyInfo = GatherInput.GetKeyedInput();
+            ProcessInput(monster, keyInfo, rnd);
+
         }
 
         private static void DisplayMenu()
@@ -124,24 +173,5 @@ namespace LORD
             Console.WriteLine("---------------------------------------------------------------");
         }
 
-        private static void ContinueEncounter(Enemy monster)
-        {
-            if (Program.player.TakeDamage(monster.DamageOutput))
-                Console.WriteLine($"{monster.Name} hits you back for {monster.DamageOutput}.");
-            else
-                Console.WriteLine($"{monster.Name} misses you completly.");
-
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Console.WriteLine($"Your hit points {Program.player.HitPoints}");
-            Console.WriteLine("**********************");
-            Console.WriteLine($"{monster.Name} 's hit points {monster.HP}");
-            DisplayMenu();
-            ConsoleKeyInfo keyInfo = GatherInput.GetKeyedInput();
-            ProcessInput(monster, keyInfo, rnd);
-
-        }
     }
 }

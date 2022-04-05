@@ -3,18 +3,26 @@ namespace LORD
 {
     internal class Enemy
     {
+        private int MinXP, MaxXP;
+        private int MinGold, MaxGold;
+        private Random rnd;
         //Enemies will be read from file
 
-        public Enemy(string name, int hp, int attackStrength, int armourClass, float attackModifier)
+        public Enemy(string name, int hp, int attackStrength, int armourClass, float attackModifier, int minXP, int maxXP, int minReward, int maxReward)
         {
             Name = name;
             HP = hp;
             IsDead = false;
             AttackStrength = attackStrength;
             ArmourClass = armourClass;
-            AttackModifier = attackModifier;
+            AttackModifier = attackModifier; // Added to D20 roll to see if enemy can hit.
 
+            MinXP = minXP;
+            MaxXP = maxXP;
+            MinGold = minReward;
+            MaxGold = maxReward;
 
+            rnd = new Random(DateTime.Now.Millisecond);
         }
 
         /// <summary>
@@ -22,7 +30,6 @@ namespace LORD
         /// </summary>
         private void Attack()
         {
-            Random rnd = new Random(DateTime.Now.Millisecond);
             double attackModifier = rnd.NextDouble();
             
             AttackStrength = (int)((double)rnd.Next(1, AttackStrength) / AttackModifier);
@@ -42,6 +49,7 @@ namespace LORD
                 //This enemy is dead
                 //Spill reward and exp
                 IsDead = true;
+                CalculateRewards();
             }
             else
             {
@@ -49,6 +57,11 @@ namespace LORD
             }
         }
 
+        private void CalculateRewards()
+        {
+            XPReward = rnd.Next(MinXP, MaxXP);
+            GoldReward = rnd.Next(MinGold, MaxGold);
+        }
 
         public int AttackStrength
         {
@@ -86,5 +99,9 @@ namespace LORD
         }
 
         public float AttackModifier { get; private set; }
+
+        public int XPReward { get; internal set; }
+        public int GoldReward { get; internal set; }
+        
     }
 }

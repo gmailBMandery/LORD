@@ -17,19 +17,19 @@ namespace LORD.Weapons
 
             base.WeaponID = 1;
             base.Name = "Stick";
-            base.Cost = 50;
+            base.Cost = 200;
             base.Value = 12;
             base.AttackDie = attackDie;
 
         }
 
-        public override int GetDamage()
+        public override int GetDamage(Boolean critHit)
         {
-            return base.GetDamage();
+            return base.GetDamage(critHit);
         }
 
 
-
+        public override WeaponIDs Type => WeaponIDs.STICK;
 
 
 

@@ -1,9 +1,12 @@
-﻿--Name:HitPoints:AttackStrength:ArmourClass:Attack Modifier
-Pot Belly Pig:5:5:2:.9
-Rude Boy:10:5:1:.81
-Black Spider:4:2:1:.95
-Stone Giant:6:3:2:.79
-Rottingboy:5:2:1:.92
-Fetidsnake:8:2:1:.95
-Misty Frost Tiger:12:4:1:.9
-Rotting Corpse:8:3:1:.83
+﻿Name:HitPoints:AttackStrength:ArmourClass:Attack Modifier:MinXP:MaxXP:MinGold:MaxGold
+Pot Belly Pig:5:5:2:.9:10:25:9:15
+Rude Boy:10:5:1:.81:15:25:14:37
+Black Spider:4:2:1:.95:5:8:3:9
+Stone Giant:6:3:2:.79:7:15:9:18
+Rottingboy:5:2:1:.92:2:8:10:15
+Fetidsnake:8:2:1:.95:5:10:2:15
+Misty Frost Tiger:12:4:1:.9:20:35:40:75
+Rotting Corpse:8:3:1:.83:10:13:12:24
+Old Woman:3:1:1:.95:1:5:1:5
+Dustspawn:4:2:1:.99:1:10:5:8
+Crypt Walker:8:4:2:.999:5:25:30:45

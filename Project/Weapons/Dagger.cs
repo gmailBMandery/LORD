@@ -12,8 +12,8 @@ namespace LORD.Weapons
         {
             base.Name = "Dagger";
             base.WeaponID = 2;
-            base.Value = 75;
-            base.Cost = 100;
+            base.Value = 10;
+            base.Cost = 1000;
 
             AttackDie ad = new AttackDie(6);
             List<AttackDie> attackDie = new List<AttackDie>();
@@ -21,9 +21,11 @@ namespace LORD.Weapons
             base.AttackDie = attackDie;
         }
 
-        public override int GetDamage()
+        public override WeaponIDs Type => throw new NotImplementedException();
+
+        public override int GetDamage(Boolean critHit)
         {
-            return base.GetDamage();
+            return base.GetDamage(critHit);
         }
     }
 }
